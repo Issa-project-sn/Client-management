@@ -1,0 +1,44 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Create Delivery">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4">
+            <Label text="Pickup Address" class="font-bold mb-2" />
+            <TextField text="{{ pickupAddress }}" hint="Enter pickup address" class="mb-4 p-2 border rounded" />
+
+            <Label text="Delivery Address" class="font-bold mb-2" />
+            <TextField text="{{ deliveryAddress }}" hint="Enter delivery address" class="mb-4 p-2 border rounded" />
+
+            <Label text="Package Description" class="font-bold mb-2" />
+            <TextField text="{{ packageDescription }}" hint="Describe the package" class="mb-4 p-2 border rounded" />
+
+            <Label text="Dimensions" class="font-bold mb-2" />
+            <GridLayout columns="*, *, *" rows="auto" class="mb-4">
+                <TextField text="{{ dimensions.length }}" hint="Length" class="p-2 border rounded" col="0" />
+                <TextField text="{{ dimensions.width }}" hint="Width" class="p-2 border rounded" col="1" />
+                <TextField text="{{ dimensions.height }}" hint="Height" class="p-2 border rounded" col="2" />
+            </GridLayout>
+
+            <Label text="Weight (kg)" class="font-bold mb-2" />
+            <TextField text="{{ dimensions.weight }}" hint="Weight" keyboardType="number" class="mb-4 p-2 border rounded" />
+
+            <Label text="Vehicle Type" class="font-bold mb-2" />
+            <ListPicker items="{{ vehicleTypes }}" selectedIndex="{{ selectedVehicleIndex }}" class="mb-4" />
+
+            <Label text="Scheduled Time" class="font-bold mb-2" />
+            <DateTimePicker date="{{ scheduledTime }}" class="mb-4" />
+
+            <GridLayout columns="auto, *" rows="auto" class="mb-4">
+                <Label text="Cash Collection" class="font-bold" col="0" />
+                <Switch checked="{{ cashCollection }}" col="1" />
+            </GridLayout>
+
+            <Label text="Special Instructions" class="font-bold mb-2" />
+            <TextView text="{{ specialInstructions }}" hint="Add any special instructions" class="mb-4 p-2 border rounded" height="100" />
+
+            <Button text="Create Delivery" tap="{{ onCreateDelivery }}" class="bg-blue-500 text-white p-4 rounded" />
+        </StackLayout>
+    </ScrollView>
+</Page>

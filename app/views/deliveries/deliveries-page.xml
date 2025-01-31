@@ -1,0 +1,45 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="My Deliveries">
+        <ActionItem tap="onCreateDelivery" ios.position="right" android.position="actionBar">
+            <Label text="+" class="text-2xl" />
+        </ActionItem>
+    </ActionBar>
+
+    <TabView selectedTabTextColor="#3498db">
+        <TabViewItem title="Pending">
+            <ListView items="{{ pendingDeliveries }}" itemTap="onDeliveryTap">
+                <ListView.itemTemplate>
+                    <StackLayout class="p-4 border-b border-gray-200">
+                        <Label text="{{ pickupAddress }}" class="font-bold" />
+                        <Label text="{{ deliveryAddress }}" class="text-gray-600" />
+                        <Label text="{{ price }}" class="text-green-600" />
+                    </StackLayout>
+                </ListView.itemTemplate>
+            </ListView>
+        </TabViewItem>
+        
+        <TabViewItem title="In Progress">
+            <ListView items="{{ activeDeliveries }}" itemTap="onDeliveryTap">
+                <ListView.itemTemplate>
+                    <StackLayout class="p-4 border-b border-gray-200">
+                        <Label text="{{ pickupAddress }}" class="font-bold" />
+                        <Label text="{{ deliveryAddress }}" class="text-gray-600" />
+                        <Label text="{{ status }}" class="text-blue-600" />
+                    </StackLayout>
+                </ListView.itemTemplate>
+            </ListView>
+        </TabViewItem>
+
+        <TabViewItem title="Completed">
+            <ListView items="{{ completedDeliveries }}" itemTap="onDeliveryTap">
+                <ListView.itemTemplate>
+                    <StackLayout class="p-4 border-b border-gray-200">
+                        <Label text="{{ pickupAddress }}" class="font-bold" />
+                        <Label text="{{ deliveryAddress }}" class="text-gray-600" />
+                        <Label text="{{ status }}" class="text-green-600" />
+                    </StackLayout>
+                </ListView.itemTemplate>
+            </ListView>
+        </TabViewItem>
+    </TabView>
+</Page>
